@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数据推送</title>
+</head>
+<body>
+当前时间：<pre id = "x">initializting...</pre>
+</body>
+<script>
+    var es = new EventSource("/push");
+    es.addEventListener("message",function(e){
+        //e.data
+        document.getElementById("x").innerHTML += "\n"+e.data;
+    },false);//使用false表示在冒泡阶段处理事件，而不是捕获阶段。
+</script>
+</html>
